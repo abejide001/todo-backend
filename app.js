@@ -1,5 +1,7 @@
+/*global process, */
 const express = require("express")
 const session = require("express-session")
+const cors = require("cors")
 const bodyParser = require("body-parser")
 const passport = require("./src/services/passport")
 const dotenv = require("dotenv")
@@ -13,6 +15,8 @@ dotenv.config()
 
 const app = express()
 
+app.use(cors())
+app.options("*", cors())
 app.use(bodyParser.json())
 
 app.use(session({
