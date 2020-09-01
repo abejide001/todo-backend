@@ -24,7 +24,7 @@ exports.signIn = async (req, res) => {
         const { email } = req.body
         const user = await User.findOne({ email })
         const token = jwtSign(user)
-        sendSuccessResponse(res, 200, { token })
+        sendSuccessResponse(res, 200, { token, user })
     } catch (error) {
         sendFailureResponse(res, 500, error.message)
     }

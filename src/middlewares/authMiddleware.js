@@ -56,7 +56,7 @@ exports.verifyPassword = async (req, res, next) => {
 exports.protectRoute = async (req, res, next) => {
     const token = req.headers['x-access-token'] || req.headers.authorization;
     if (!token) {
-        sendFailureResponse(res, 400, "Provide a token")
+        sendFailureResponse(res, 401, "Provide a token")
         return;
     }
     try {
