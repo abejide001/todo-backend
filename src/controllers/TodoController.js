@@ -22,11 +22,12 @@ exports.getTodo = async (req, res) => {
 
 exports.createTodo = async (req, res) => {
     try {
-        const { name, description, priority } = req.body
+        const { name, description, priority, completed } = req.body
         const newTodo = await Todo.create({
             name,
             description,
             priority,
+            completed,
             user: req.user.id
         })
         sendSuccessResponse(res, 201, newTodo)
