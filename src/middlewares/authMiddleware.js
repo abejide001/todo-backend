@@ -82,6 +82,6 @@ exports.getToken = async (req, res) => {
 
     const freshUser = await User.findById(id).select(["-password"])
     req.user = freshUser
-    // sendSuccessResponse(res, 201, "User logged in successfully", { freshUser })
+    sendSuccessResponse(res, 201, "User logged in successfully", { freshUser })
     return res.redirect(`${process.env.FRONTEND_BASE_PATH}/auth?token=${token}`);
 }
